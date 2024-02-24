@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mynewapplication
+  labels:
+    app: myapp
+spec:
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: mynewapplication
+          image: redis
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp

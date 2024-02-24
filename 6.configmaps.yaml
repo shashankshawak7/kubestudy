@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  app_color: blue
+  app_mode: demo
+
+# kubectl create configmap app-config --from-literal=app_color=red

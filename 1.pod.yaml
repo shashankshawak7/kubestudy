@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mynewapplication2
+  labels:
+    app: myapp
+spec:
+  containers:
+    - name: mynewapplication2
+      image: busybox
+      envFrom:
+        - secretRef:
+            name: mysecret
+      ports:
+        - containerPort: 80
+      command: ["/bin/sh", "-ec", "sleep 1000000"]
+      resources:
+        requests:
+          memory: "1Gi"
+          cpu: 1
+        limits:
+          memory: "2Gi"
+          cpu: 2
+
+

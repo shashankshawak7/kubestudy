@@ -1,0 +1,19 @@
+#  in case of uneven nodes
+# kubectl label nodes shashank-1-2 name: master
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: myapplication12
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+  nodeSelector:
+    name: notmaster
+
+# shashank@shashank-1-2:~/kubernetes$ kubectl get pods
+# NAME                READY   STATUS    RESTARTS   AGE
+# mynewapplication2   1/1     Running   0          19m
+# myapplication       1/1     Running   0          5m11s
+# myapplication11     0/1     Pending   0          4m16s
+# myapplication12     0/1     Pending   0          8s

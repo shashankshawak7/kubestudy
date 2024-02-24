@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mynewapplication1
+  labels:
+    app: myapp
+spec:
+  securityContext:
+    runAsUser: 1003
+  containers:
+    - name: mynewapplication1
+      image: busybox
+      envFrom:
+        - secretRef:
+            name: mysecret
+      ports:
+        - containerPort: 80
+      command: ["/bin/sh", "-ec", "sleep 1000000"]
+      
+
+
